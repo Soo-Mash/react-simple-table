@@ -1,21 +1,41 @@
-## Tipalti React Starter Template
+## SIMON JONES submission - Tipalti React Starter Template
+This is a simple tabulated dislay of fetched data from an API, as part of the interview process for Tipalti.
+It was built off of a simplified React starter template configured using [Vite](https://vitejs.dev/guide/), a build tool that aims to provide a faster and leaner development experience.
+Instead of being forked, this repository was cloned using SSH from a provided template https://github.com/ruairidhflint/react-ts-starter, and was pushed to a new repo on @SooMash's GitHub by pointing it to the the repo's URL. 
 
-This is a simplified React starter template configured using [Vite](https://vitejs.dev/guide/), a build tool that aims to provide a faster and leaner development experience.
+## Tech stack
+Main technologies in use are
+- NPM
+- Vite
+- React
+- TypeScript
+- MaterialUI
+- Prettier
 
-It has minimal dependencies and configuration to allow for easy installation and to allow the candidate to make their own decisions about styling, external libraries and other tooling.
+## To run locally
+- Clone repo locally with HTTPS or SSH method
+- From the root folder, run `npm install` to install all required dependencies.
+- Run in terminal: `npm run dev`
+- Open localhost port as indicated
 
-You are free to make changes to the template but please be aware that those reviewing your work will need to be able to install and run it locally without difficulty.
 
----
+## Noteworthy features: user experience as primary focus
+- Fully responsive from mobile to desktop screen widths
+- Loading state, error state & user friendly error toaster
 
-## Usage
+# Noteworthy features: contributing developers as primary focus
+- Features were contributed to a GIT repository to mimic a basic GitFlow strategy (feature branch -> feature PR -> develop branch -> release PR -> production branch (main)). PS - "develop branch" was excluded for sake of time, instead PR-ing directly into master branch
+- All releases to 'production' were tagged with semantic versioning
+- Re-usable components adhered to in modern React standards, very little duplicated code.
+- Prettier formatting implemented for readibilty & consistent code structure.
 
-To use the repository for your challenge submission, please clone the repository and create a new repository on your own Github account . Please DO NOT try to push branches, make pull requests  or fork the original source template repository.
 
-### Installation
+## Screenshots:
+Primary views:
+![image](https://github.com/user-attachments/assets/45b3d489-0b54-4fda-be2e-d679ad38e280)
+![image](https://github.com/user-attachments/assets/5301e0b8-9b46-48ba-8378-b844e642160c)
+![Mobile gif](https://github.com/user-attachments/assets/dfd2cf48-67db-4574-b7d0-f4db25e2e2a4)
 
-From the root folder, run `npm install` to install all required dependencies.
 
-### Running Locally
-
-From the root folder, run `npm run dev` to run a local server with hot reloading.
+Error toaster
+![image](https://github.com/user-attachments/assets/307ad4c4-76b4-466d-8f52-f1b1d77afef6)
