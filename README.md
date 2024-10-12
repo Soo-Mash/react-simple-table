@@ -29,6 +29,11 @@ Main technologies in use are
 - Re-usable components adhered to in modern React standards, very little duplicated code.
 - Prettier formatting implemented for readibilty & consistent code structure.
 
+### Improvements:
+- Improve visual aesthetic of table components
+- Add ability to re-fetch data
+- Improve loading & error state visuals with skeleton / placeholder elements
+
 
 ## Screenshots:
 Primary views:
