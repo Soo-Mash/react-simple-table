@@ -1,4 +1,4 @@
-function App() {
+const App = () => {
   return (
     <div id="template-text">
       <h1>React Starter Template</h1>
