@@ -1,10 +1,21 @@
 import TableLayout from './components/TableLayout';
 import { useEffect, useState } from 'react';
-import { ExpenseItem } from './Types/componentTypes';
+import { ExpenseItem, Pagination } from './Types/componentTypes';
 import { Snackbar } from '@mui/material';
+
+const defaultPagination: Pagination = {
+  currentPage: 1,
+  next: {
+    limit: 20,
+    page: 2,
+  },
+  totalPages: 10,
+};
 
 const App = () => {
   const [expenses, setExpenses] = useState<ExpenseItem[]>([]);
+  const [pagination, setPagination] = useState<Pagination>(defaultPagination);
+  const [pageNumberRequest, setPageNumberRequest] = useState<number>(1);
   const [expensesLoading, setExpensesLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [errorToastOpen, setErrorToastOpen] = useState<boolean>(false);
@@ -13,18 +24,25 @@ const App = () => {
     setExpensesLoading(true);
     try {
       const response = await fetch(
-        'https://expenses-backend-mu.vercel.app/expenses',
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Username: 'simon.jones',
-          },
-        }
+        `https://tip-transactions.vercel.app/api/transactions?page=${pageNumberRequest}`
       );
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
-      const data: ExpenseItem[] = await response.json();
-      setExpenses(data);
+
+      const responseData = await response.json();
+      const expensesList: ExpenseItem[] = responseData.transactions;
+      const paginationData = {
+        currentPage: responseData.currentPage,
+        next: responseData.next,
+        totalPages: responseData.totalPages,
+      };
+
+      console.log('SIMON transactionList', expensesList);
+      console.log('SIMON paginationData', paginationData);
+      console.log('---------------');
+
+      setExpenses(expensesList);
+      setPagination(paginationData);
       setExpensesLoading(false);
     } catch (err) {
       if (err instanceof Error) setError(err.message);
@@ -40,7 +58,7 @@ const App = () => {
 
   useEffect(() => {
     fetchExpenses();
-  }, []);
+  }, [pageNumberRequest]);
 
   return (
     <div id="template-text">
@@ -48,6 +66,8 @@ const App = () => {
         tableDataList={expenses}
         expensesLoading={expensesLoading}
         error={error}
+        pagination={pagination}
+        setPageNumberRequest={setPageNumberRequest}
       />
       <Snackbar
         open={errorToastOpen}
